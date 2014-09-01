@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # based on a script from http://wiki.openstreetmap.org/wiki/Converting_OSM_to_GML
 # modified to work with JPGIS(GML) V4.0 XSD by yoshida
-import sys, re, xml.sax
+import os, sys, re, xml.sax
 from xml.sax.handler import ContentHandler
 from xml.etree.cElementTree import Element, SubElement, ElementTree
 from fgdschema import fgdschema
@@ -168,7 +168,8 @@ class fgd2gml (ContentHandler):
 
 
 if __name__ == "__main__":
-	fgdParser = fgd2gml(sys.stdout, "FGD_GMLSchema.xsd")
+	xsdfile = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'FGD_GMLSchema.xsd')
+	fgdParser = fgd2gml(sys.stdout, xsdfile)
 	print '<?xml version="1.0" encoding="utf-8" ?>'
 	print '<ogr:FeatureCollection'
 	print '     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'
