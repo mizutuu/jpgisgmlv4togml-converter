@@ -1,29 +1,75 @@
 jpgisgmlv4togml-converter
 =========================
 
-JPGIS(GML) V4.0形式の基盤地図情報(基本項目)データを、GMLに変換するコンバータです。
+国土地理院 基盤地図情報基本項目 JPGIS(GML) V4.0形式のデータを、GMLに変換するコンバータです。
+
+基盤地図情報：[http://www.gsi.go.jp/kiban/](http://www.gsi.go.jp/kiban/)
+
 
 使い方
 -----
 
 * 基盤地図情報基本項目XMLデータを、GMLに変換する
 
-`cat FG-GML-533946-AdmArea-20140701-0001.xml | python jpgisgml2gml.py > AdmArea.gml`
+`$ cat FG-GML-533946-AdmArea-20140701-0001.xml | python jpgisgml2gml.py > AdmArea.gml`
 
 * GMLを、Shapeに変換する
 
-`ogr2ogr -f "ESRI Shapefile" -lco "ENCODING=UTF-8" AdmArea AdmArea.gml`
+`$ ogr2ogr -f "ESRI Shapefile" -lco "ENCODING=UTF-8" AdmArea AdmArea.gml`
 
 
 制限事項
 -----
 
-すべての基盤地図情報基本項目XMLデータを、GMLに変換できるかはまだ検証していません。
+本スクリプトで変換可能な、基盤地図情報基本項目のXMLデータは以下の通りです。
 
+【動作検証状況まとめ】
+
+| データ項目        | 属性名     | 動作検証状況 |
+| --------------- | ---------- | ---------- |
+| 測量の基準点      | GCP        | *1         |
+| DEM区画          | DEM        | *1         |
+| DEM構成点        | DEM構成点   | *1         |
+| DGHM区画         | DGHM       | *1         |
+| DGHM構成点       | DGNM構成点  | *1         |
+| 標高点           | ElevPt     | 一部検証済み |
+| 等高線           | Cntr       | 一部検証済み |
+| 行政区画         | AdmArea    | 一部検証済み |
+| 行政区画界線      | AdmBdry    | 一部検証済み |
+| 町字界線         | CommBdry   | 一部検証済み |
+| 行政区画代表点    | AdmPt      | 一部検証済み |
+| 町字の代表点      | CommPt     | 一部検証済み |
+| 街区域           | SBArea     | 未チェック   |
+| 街区線           | SBBdry     | 未チェック   |
+| 街区の代表点      | SBAPt      | 未チェック   |
+| 水域             | WA         | 一部検証済み |
+| 水涯線           | WL         | 一部検証済み |
+| 海岸線           | Cstline    | 一部検証済み |
+| 水部構造物線      | WStrL      | 一部検証済み |
+| 水部構造物面      | WStrA      | 一部検証済み |
+| 河川堤防表法肩法線 | LeveeEdge  | 未チェック   |
+| 河川区域界線      | RvrMgtBdry | 未チェック   |
+| 建築物           | BldA       | 一部検証済み |
+| 建築物の外周線    | BldL       | 一部検証済み |
+| 道路縁           | RdEdg      | 一部検証済み |
+| 道路構成線        | RdCompt    | 一部検証済み |
+| 道路域分割線      | RdASL      | 未チェック   |
+| 道路域域         | RdArea      | 未チェック   |
+| 道路区分面        | RdSgmtA    | 未チェック   |
+| 道路区域界線      | RdMgtBdry  | 未チェック   |
+| 軌道の中心線      | RailCL     | 一部検証済み |
+
+* *1. 本変換スクリプトでは扱いません。
+* "一部検証済み" → 幾つかのXMLデータで変換できることを確認済みの状態。（但し、日本全国の範囲では確認できていない）
+* "未チェック" → 未確認状態。XMLデータ発見時に検証します。
+
+なお、検証は、"変換できる" / "変換できない" を元に判断しており、
+変換後のGMLにデータ欠損があるかどうかは確認できていません。
+本スクリプトを使用する際は自己責任でお願いします。（一応抜けがないようにチェックはしていますが。）
 
 Todo
 -----
 
 * GMLへの変換検証
-* xsdファイルを外部から指定可能なように変更
+* エラートラップ/Usage
 * テストケース追加
