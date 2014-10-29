@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 from lxml import etree
 from copy import copy
 from schema import schema
@@ -67,7 +68,8 @@ class fgdschema(schema):
 
 
 if __name__ == '__main__':
-    with open("FGD_GMLSchema.xsd") as f:
+    xsdfile = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'FGD_GMLSchema.xsd')
+    with open(xsdfile) as f:
 
         schema = fgdschema(f)
 
