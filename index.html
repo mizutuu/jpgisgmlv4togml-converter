@@ -1,79 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
+    <meta charset="UTF-8">
     <title>Jpgisgmlv4togml-converter by mizutuu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-          <a href="http://mizutuu.github.io/jpgisgmlv4togml-converter"><h1>Jpgisgmlv4togml-converter</h1></a>
-        <h2>基盤地図情報 JPGIS(GML) V4.0形式のデータを、GMLに変換するコンバータです。</h2>
-        <a href="https://github.com/mizutuu/jpgisgmlv4togml-converter" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+    <section class="page-header">
+      <h1 class="project-name">Jpgisgmlv4togml-converter</h1>
+      <h2 class="project-tagline">基盤地図情報 JPGIS(GML) V4.0形式のデータを、GMLに変換するコンバータです。</h2>
+      <a href="https://github.com/mizutuu/jpgisgmlv4togml-converter" class="btn">View on GitHub</a>
+      <a href="https://github.com/mizutuu/jpgisgmlv4togml-converter/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/mizutuu/jpgisgmlv4togml-converter/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
-<a name="jpgisgmlv4togml-converter" class="anchor" href="#jpgisgmlv4togml-converter"><span class="octicon octicon-link"></span></a>Jpgisgmlv4togml-converter</h3>
+    <section class="main-content">
+      <h1>
+<a id="jpgisgmlv4togml-converter" class="anchor" href="#jpgisgmlv4togml-converter" aria-hidden="true"><span class="octicon octicon-link"></span></a>jpgisgmlv4togml-converter</h1>
 
-<p>国土地理院 基盤地図情報基本項目 JPGIS(GML) V4.0形式のデータを、GMLに変換するコンバータです。
-GMLは、そのままShape形式に変換することもできます。また、PostGISへのインポートも可能です。</p>
-
-<p>GISソフトウェアでも同様に変換できますが、本スクリプトは、大量の基盤地図情報を一括で変換するような用途で使用します。</p>
+<p>国土地理院 基盤地図情報基本項目 JPGIS(GML) V4.0形式のデータを、GMLに変換するコンバータです。</p>
 
 <p>基盤地図情報：<a href="http://www.gsi.go.jp/kiban/">http://www.gsi.go.jp/kiban/</a></p>
 
-<h3>
-<a name="%E4%BD%BF%E3%81%84%E6%96%B9" class="anchor" href="#%E4%BD%BF%E3%81%84%E6%96%B9"><span class="octicon octicon-link"></span></a>使い方</h3>
+<h2>
+<a id="使い方" class="anchor" href="#%E4%BD%BF%E3%81%84%E6%96%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>使い方</h2>
 
 <ul>
 <li>基盤地図情報基本項目XMLデータを、GMLに変換する</li>
-</ul><pre><code>$ cat FG-GML-533946-AdmArea-20140701-0001.xml | python jpgisgml2gml.py &gt; AdmArea.gml
-</code></pre>
+</ul>
+
+<p><code>$ cat FG-GML-533946-AdmArea-20140701-0001.xml | python jpgisgml2gml.py &gt; AdmArea.gml</code></p>
 
 <ul>
 <li>GMLを、Shapeに変換する</li>
-</ul><pre><code>$ ogr2ogr -f "ESRI Shapefile" -lco "ENCODING=UTF-8" AdmArea AdmArea.gml
-</code></pre>
+</ul>
+
+<p><code>$ ogr2ogr -f "ESRI Shapefile" -lco "ENCODING=UTF-8" AdmArea AdmArea.gml</code></p>
+
+<h2>
+<a id="gmlへの変換結果" class="anchor" href="#gml%E3%81%B8%E3%81%AE%E5%A4%89%E6%8F%9B%E7%B5%90%E6%9E%9C" aria-hidden="true"><span class="octicon octicon-link"></span></a>GMLへの変換結果</h2>
+
+<p><a href="https://github.com/mizutuu/jpgisgmlv4togml-converter/wiki">GMLへの変換詳細</a>に、変換前後の比較をまとめました。</p>
+
+<h2>
+<a id="制限事項" class="anchor" href="#%E5%88%B6%E9%99%90%E4%BA%8B%E9%A0%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>制限事項</h2>
+
+<p>本スクリプトで変換可能な基盤地図情報基本項目のXMLデータは、以下表に記載のクラスに限られます。</p>
 
 <h3>
-GMLへの変換詳細
-</h3>
-<p><a href="https://github.com/mizutuu/jpgisgmlv4togml-converter/wiki">Wikiを参照して下さい。</a></p>
-        </section>
+<a id="動作検証済み項目" class="anchor" href="#%E5%8B%95%E4%BD%9C%E6%A4%9C%E8%A8%BC%E6%B8%88%E3%81%BF%E9%A0%85%E7%9B%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>動作検証済み項目</h3>
 
-        <aside id="sidebar">
-          <a href="https://github.com/mizutuu/jpgisgmlv4togml-converter/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/mizutuu/jpgisgmlv4togml-converter/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-            
-          <p class="repo-owner"><a href="https://github.com/mizutuu/jpgisgmlv4togml-converter"></a> is maintained by <a href="https://github.com/mizutuu">mizutuu</a>.</p>
+<table>
+<thead>
+<tr>
+<th>データ項目</th>
+<th>クラス名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標高点</td>
+<td>ElevPt</td>
+</tr>
+<tr>
+<td>等高線</td>
+<td>Cntr</td>
+</tr>
+<tr>
+<td>行政区画</td>
+<td>AdmArea</td>
+</tr>
+<tr>
+<td>行政区画界線</td>
+<td>AdmBdry</td>
+</tr>
+<tr>
+<td>町字界線</td>
+<td>CommBdry</td>
+</tr>
+<tr>
+<td>行政区画代表点</td>
+<td>AdmPt</td>
+</tr>
+<tr>
+<td>町字の代表点</td>
+<td>CommPt</td>
+</tr>
+<tr>
+<td>街区線</td>
+<td>SBBdry</td>
+</tr>
+<tr>
+<td>街区の代表点</td>
+<td>SBAPt</td>
+</tr>
+<tr>
+<td>水域</td>
+<td>WA</td>
+</tr>
+<tr>
+<td>水涯線</td>
+<td>WL</td>
+</tr>
+<tr>
+<td>海岸線</td>
+<td>Cstline</td>
+</tr>
+<tr>
+<td>水部構造物線</td>
+<td>WStrL</td>
+</tr>
+<tr>
+<td>水部構造物面</td>
+<td>WStrA</td>
+</tr>
+<tr>
+<td>建築物</td>
+<td>BldA</td>
+</tr>
+<tr>
+<td>建築物の外周線</td>
+<td>BldL</td>
+</tr>
+<tr>
+<td>道路縁</td>
+<td>RdEdg</td>
+</tr>
+<tr>
+<td>道路構成線</td>
+<td>RdCompt</td>
+</tr>
+<tr>
+<td>軌道の中心線</td>
+<td>RailCL</td>
+</tr>
+</tbody>
+</table>
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
+<ul>
+<li>幾つかのXMLデータで変換できることを確認済みの状態です。但し、日本全国の範囲では未確認です。</li>
+<li>検証は"変換できる" / "変換できない" を元に判断しており、変換後のGMLにデータ欠損があるかどうかは確認できていません。</li>
+</ul>
 
-  
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/mizutuu/jpgisgmlv4togml-converter">Jpgisgmlv4togml-converter</a> is maintained by <a href="https://github.com/mizutuu">mizutuu</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-63043386-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
+
